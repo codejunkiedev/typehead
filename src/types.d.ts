@@ -1,5 +1,5 @@
 type UpdateText = (text: string) => void;
-type UpdateFocus = () => void;
+type UpdateFocus = (val:boolean) => void;
 type UpdateSearchData = (text: SearchResult[]) => void;
 
 type SearchResult = {

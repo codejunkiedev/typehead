@@ -3,7 +3,6 @@ import './App.css';
 import { fetchSearchText } from './API';
 import InputText from './components/InputText';
 import ItemCard from './components/ItemCard';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import * as images from './helper/images';
 
 function App() {
@@ -29,8 +28,8 @@ function App() {
     setIsLoading(false);
   };
 
-  const updateFocus: UpdateFocus = async () => {
-    setInputTextFocus(true);
+  const updateFocus: UpdateFocus = async (val:boolean) => {
+    setInputTextFocus(val);
   };
 
   const useOutsideAlerter = (ref: any) => {
@@ -52,15 +51,15 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="align-items-center row mt-5">
+        <div className="align-items-center justify-content-center row mt-5">
           <div className="align-items-center d-flex justify-content-center">
             <img className="github-logo" src={images.githublogo} />
-            <h1 className="title">typeahead.js</h1>
+            <h1 className="title">typeahead</h1>
           </div>
         </div>
-        <div className="tagline">
+        {/* <div className="tagline">
           a flexible JavaScript library that provides a strong foundation for building robust typeaheads
-        </div>
+        </div> */}
 
         <div className="d-flex justify-content-center mt-5">
           <div className="position-relative card-form ">
@@ -80,14 +79,14 @@ function App() {
                 ))}
               </div>
             }
-            <div className="links">
+            {/* <div className="links">
               <a href="#" className="links text-decoration-none">
                 or see examples
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
-        <div>
+        {/* <div>
           <div>
             <a className="btn-download text-decoration-none" href="#"><strong>download</strong> v0.0.1</a>
           </div>
@@ -100,7 +99,7 @@ function App() {
           <span className="links">follow</span>
           <span className="links">follow</span>
           <span className="links">follow</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

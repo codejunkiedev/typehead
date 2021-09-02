@@ -19,7 +19,8 @@ const InputText: React.FunctionComponent<Props> = ({ updateText,isLoading,update
                 type="text"
                 placeholder="Enter Name"
                  value={text}
-                 onFocus={updateFocus}
+                 onFocus={()=>updateFocus(true)}
+                 onBlur={()=>updateFocus(false)}
                  onChange={e => {
                      setText(e.target.value);
                      updateText(e.target.value);

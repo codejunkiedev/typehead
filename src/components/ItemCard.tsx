@@ -15,7 +15,7 @@ const ItemCard: React.FunctionComponent<Props> = ({ item }) => {
             <a href="#" className="text-decoration-none" onClick={()=>handleOpenProfile(html_url)} >
             <div className="align-items-center card-body">
                 <img className="user-img" src={avatar_url} />
-                <span className="ml-10 text-color">{login}</span>
+                <span className="name text-black">{login}</span>
             </div>
             </a>
         </div>
