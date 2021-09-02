@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 type Props = {
     item: SearchResult;
+    text:string
 }
 
-const ItemCard: React.FunctionComponent<Props> = ({ item }) => {
+const ItemCard: React.FunctionComponent<Props> = ({ item,text }) => {
     const { login, avatar_url, html_url } = item
-    const [text, setText] = useState('');
     const handleOpenProfile = (url: string) => {
         window.open(url);
     }
@@ -15,7 +15,8 @@ const ItemCard: React.FunctionComponent<Props> = ({ item }) => {
             <div className="item-card-wrapper">
                 <div className="align-items-center card-body">
                     <img className="user-img" src={avatar_url} />
-                    <span className="name text-black">{login}</span>
+                    <span className="name-bold text-black-bold">{text}</span>
+                    <span className="name text-grey">{login.replace(text,"")}</span>
                 </div>
             </div>
         </a>

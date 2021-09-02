@@ -11,6 +11,7 @@ function App() {
   const [showSearchedData, setShowSearchedData] = useState(false)
   const [hintText, setHintText] = useState('')
   const [paddingLeft, setPaddingLeft] = useState(0);
+  const [text, setText] = useState('');
 
 
   const updateText: UpdateText = async (text: string) => {
@@ -18,12 +19,19 @@ function App() {
     const search = await fetchSearchText(text);
     setShowSearchedData(true);
     setSearchedData(search ? search : []);
+    setText(text);
+
+
     if (search) {
-      if (search[0].login.includes(text)) {
-        setHintText(search[0].login.replace(text, ""))
-        setPaddingLeft(text.length * 7.5)
+      if (search.length > 0) {
+
+        if (search[0].login.includes(text)) {
+          setHintText(search[0].login.replace(text, ""))
+          setPaddingLeft(text.length * 7.5)
+        }
       }
     }
+
     setIsLoading(false);
   };
 
@@ -74,7 +82,7 @@ function App() {
             {(searchedData.length > 0 && showSearchedData) &&
               <div ref={wrapperRef} className="item-card">
                 {searchedData.map((val: SearchResult) => (
-                  <ItemCard key={val.id} item={val} />
+                  <ItemCard key={val.id} item={val} text={text} />
                 ))}
               </div>
             }
