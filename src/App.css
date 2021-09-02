@@ -16,10 +16,6 @@
   height: 100vh
 }
 
-/* .wrapper{
-  width: 400px;
-} */
-
 .item-card {
   height: 400px;
   overflow: auto;
@@ -45,13 +41,10 @@
 
 .card-body {
   display: flex;
-  /* border: 1px solid; */
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 10px;
   width: 200px;
-  /* border-radius: 5px;
-  border-color: #d1d1d1; */
 }
 
 .user-img {
@@ -108,11 +101,8 @@
 .loader {
   height: 25px;
   width: 25px;
+  margin-right: 5px;
 }
-
-/* .card-form{
-  background-color:aquamarine;
-} */
 
 .position-relative {
   position: relative !important;
@@ -140,47 +130,6 @@
   color: #999;
 }
 
-.btn-download {
-  position: relative;
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  margin: 150px 0 0 0;
-  padding: 10px 20px;
-  color: #fff;
-  font: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  font-size: 32px;
-  line-height: 38px;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, .25);
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  background-color: #394042;
-  background-image: -moz-linear-gradient(top, #394042, #000000);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#394042), to(#000000));
-  background-image: -webkit-linear-gradient(top, #394042, #000000);
-  background-image: -o-linear-gradient(top, #394042, #000000);
-  background-image: linear-gradient(to bottom, #394042, #000000);
-  background-repeat: repeat-x;
-  border: 1px solid #024e6a;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: 0 2px 5px -2px #111;
-  -moz-box-shadow: 0 2px 5px -2px #111;
-  box-shadow: 0 2px 5px -2px #111;
-}
-
-.btn-download:hover {
-  background-color: #394042;
-  background-image: none;
-  color: #fff;
-}
-
 .hint-text {
   background-color: transparent;
   border: 0;
@@ -190,15 +139,15 @@
   z-index: 1;
 }
 
-.bg-white{
+.bg-white {
   background-color: white;
 }
 
-.border-radius-10{
+.border-radius-10 {
   border-radius: 10px;
 }
 
-.name{
+.name {
   margin-left: 25px;
   font-size: 22px;
 }
@@ -208,7 +157,7 @@
 }
 
 .mt-5 {
-  margin-top: 3rem!important;
+  margin-top: 3rem !important;
 }
 
 .row {
@@ -222,23 +171,21 @@
 }
 
 .d-flex {
-  display: flex!important;
+  display: flex !important;
 }
 
 .w-100 {
-  width: 100%!important;
+  width: 100% !important;
 }
 
 .bg-white {
-  /* --bs-bg-opacity: 1; */
-  /* background-color: rgba(var(--bs-white-rgb),var(--bs-bg-opacity))!important; */
   background-color: #fff;
 }
 
 .justify-content-center {
-  justify-content: center!important;
+  justify-content: center !important;
 }
 
-.text-black{
+.text-black {
   color: #000000 !important;
 }
