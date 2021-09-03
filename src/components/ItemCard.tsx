@@ -16,7 +16,7 @@ const ItemCard: React.FunctionComponent<Props> = ({ item,text }) => {
                 <div className="align-items-center card-body">
                     <img className="user-img" src={avatar_url} />
                     <span className="name-bold text-black-bold">{text}</span>
-                    <span className="name text-grey">{login.replace(text,"")}</span>
+                    <span className="name text-grey">{(login).toLowerCase().replace(text,"")}</span>
                 </div>
             </div>
         </a>

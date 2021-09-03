@@ -28,8 +28,14 @@ function App() {
         if (search[0].login.includes(text)) {
           setHintText(search[0].login.replace(text, ""))
           setPaddingLeft(text.length * 7.5)
+        }else{
+          setHintText("")
         }
+      }else{
+        setHintText("")
       }
+    }else{
+      setHintText("")
     }
 
     setIsLoading(false);
@@ -74,7 +80,7 @@ function App() {
             {inputTextFocus &&
               <input
                 style={{ paddingLeft: paddingLeft }}
-                className="hint-text text-color"
+                className="hint-text text-grey"
                 type="text"
                 value={hintText}
                 disabled

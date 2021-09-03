@@ -22,8 +22,8 @@ const InputText: React.FunctionComponent<Props> = ({ updateText, isLoading, upda
                         onFocus={() => updateFocus(true)}
                         onBlur={() => updateFocus(false)}
                         onChange={e => {
-                            setText(e.target.value);
-                            updateText(e.target.value);
+                            setText((e.target.value).toLowerCase());
+                            updateText((e.target.value).toLowerCase());
                         }}
                     ></input>
                     {isLoading &&
