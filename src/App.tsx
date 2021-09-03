@@ -52,7 +52,7 @@ function App() {
     //check if api limit exceeded
     if (search == undefined) {
       setIsLoading(false);
-      return setLimitExceed("API Limit Exceed Please wait 1 min.");
+      return setLimitExceed("API limit exceeded. Please try again later.");
     } else {
       setLimitExceed("");
     }
