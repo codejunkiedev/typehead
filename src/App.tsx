@@ -14,6 +14,8 @@ function App() {
   const [text, setText] = useState('');
   const [limitExceed, setLimitExceed] = useState('');
 
+
+  //function for debounce input text to call api after user stop typing
   const debounce = (func: any, wait: any, immediate: any) => {
     var timeout: any;
     return function () {
@@ -30,17 +32,24 @@ function App() {
     };
   };
 
+  //This function is called when user done typing
   const updateText: UpdateText = debounce(async (text: string) => {
+    //check if input field is empty
     if (text == "") {
       setHintText("")
       setSearchedData([]);
       return;
     }
+
     setIsLoading(true);
+    
+    //api call
     const search = await fetchSearchText(text)
     setShowSearchedData(true);
     setSearchedData(search ? search : []);
     setText(text);
+
+    //check if api limit exceeded
     if (search == undefined) {
       setIsLoading(false);
       return setLimitExceed("API Limit Exceed Please wait 1 min.")
@@ -48,6 +57,7 @@ function App() {
       setLimitExceed("")
     }
 
+    //checking if received search result
     if (search) {
       if (search.length > 0) {
 
@@ -66,6 +76,7 @@ function App() {
     setIsLoading(false);
   }, 1000, false);
 
+  //function for to check set input focus 
   const updateFocus: UpdateFocus = async (val: boolean) => {
     if (val) {
       setShowSearchedData(true);
@@ -73,6 +84,7 @@ function App() {
     setInputTextFocus(val);
   };
 
+  //function to detect click event outside the item card
   const useOutsideAlerter = (ref: any) => {
     useEffect(() => {
       function handleClickOutside(event: any) {
@@ -87,6 +99,8 @@ function App() {
       };
     }, [ref]);
   }
+
+  //creating ref for click outside the item card
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
 
@@ -102,7 +116,9 @@ function App() {
 
         <div className="d-flex justify-content-center mt-5">
           <div className="position-relative card-form ">
+            {/* Input Text */}
             <InputText updateText={updateText} isLoading={isLoading} updateFocus={updateFocus} />
+            {/* Input Text for auto complete */}
             {inputTextFocus &&
               <input
                 style={{ paddingLeft: paddingLeft }}
@@ -112,6 +128,7 @@ function App() {
                 disabled
               ></input>
               } 
+              {/* Item card */}
             {(searchedData.length > 0 && showSearchedData) &&
               <div ref={wrapperRef} className="item-card">
                 {searchedData.map((val: SearchResult) => (
