@@ -3,6 +3,7 @@ import './App.css';
 import { fetchSearchText } from './API';
 import InputText from './components/InputText';
 import ItemCard from './components/ItemCard';
+import { isSafari } from './helper/common';
 
 function App() {
   const [searchedData, setSearchedData] = useState([])
@@ -14,7 +15,7 @@ function App() {
   const [text, setText] = useState('');
   const [limitExceed, setLimitExceed] = useState('');
 
-  const debounce =(func: any, wait: any, immediate: any)=> {
+  const debounce = (func: any, wait: any, immediate: any) => {
     var timeout: any;
     return function () {
       var context = arguments;
@@ -31,14 +32,13 @@ function App() {
   };
 
   const updateText: UpdateText = debounce(async (text: string) => {
-    if(text=="")
-    {
+    if (text == "") {
       setHintText("")
-      return; 
+      setSearchedData([]);
+      return;
     }
     setIsLoading(true);
     const search = await fetchSearchText(text)
-    console.log("sear", search);
     setShowSearchedData(true);
     setSearchedData(search ? search : []);
     setText(text);
@@ -54,7 +54,12 @@ function App() {
 
         if (search[0].login.includes(text)) {
           setHintText(search[0].login.replace(text, ""))
-          setPaddingLeft(text.length * 7.5)
+
+          if (isSafari()) {
+            setPaddingLeft(text.length * 5.3)
+          } else {
+            setPaddingLeft(text.length * 7.5)
+          }
         } else {
           setHintText("")
         }
