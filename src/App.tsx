@@ -3,7 +3,6 @@ import './App.css';
 import { fetchSearchText } from './API';
 import InputText from './components/InputText';
 import ItemCard from './components/ItemCard';
-import { isSafari } from './helper/common';
 
 function App() {
   const [searchedData, setSearchedData] = useState([])
@@ -53,14 +52,7 @@ function App() {
       if (search.length > 0) {
 
         if (search[0].login.includes(text)) {
-          // setHintText(search[0].login.replace(text, ""))
           setHintText(search[0].login)
-
-          if (isSafari()) {
-            // setPaddingLeft(text.length * 5)
-          } else {
-            // setPaddingLeft(text.length * 7.5)
-          }
         } else {
           setHintText("")
         }
@@ -118,7 +110,8 @@ function App() {
                 type="text"
                 value={hintText}
                 disabled
-              ></input>}
+              ></input>
+              } 
             {(searchedData.length > 0 && showSearchedData) &&
               <div ref={wrapperRef} className="item-card">
                 {searchedData.map((val: SearchResult) => (
