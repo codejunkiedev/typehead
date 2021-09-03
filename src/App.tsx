@@ -10,7 +10,6 @@ function App() {
   const [inputTextFocus, setInputTextFocus] = useState(false)
   const [showSearchedData, setShowSearchedData] = useState(false)
   const [hintText, setHintText] = useState('')
-  const [paddingLeft, setPaddingLeft] = useState(0);
   const [text, setText] = useState('');
   const [limitExceed, setLimitExceed] = useState('');
 
@@ -121,7 +120,6 @@ function App() {
             {/* Input Text for auto complete */}
             {inputTextFocus &&
               <input
-                style={{ paddingLeft: paddingLeft }}
                 className="hint-text"
                 type="text"
                 value={hintText}
