@@ -33,9 +33,9 @@ function App() {
 
   //This function is called when user done typing
   const updateText: UpdateText = debounce(async (text: string) => {
+    setHintText("")
     //check if input field is empty
     if (text == "") {
-      setHintText("")
       setSearchedData([]);
       return;
     }
