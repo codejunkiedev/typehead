@@ -196,8 +196,14 @@
 .text-grey {
   color: #777!important;
 }
+.text-dark-grey {
+  color: #444!important;
+}
 
 .text-black-bold{
   color: #000000;
   font-weight: 600;
+}
+.text-danger{
+  color:red;
 }

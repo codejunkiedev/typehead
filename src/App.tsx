@@ -12,15 +12,42 @@ function App() {
   const [hintText, setHintText] = useState('')
   const [paddingLeft, setPaddingLeft] = useState(0);
   const [text, setText] = useState('');
+  const [limitExceed, setLimitExceed] = useState('');
 
+  const debounce =(func: any, wait: any, immediate: any)=> {
+    var timeout: any;
+    return function () {
+      var context = arguments;
+      var args = arguments;
+      var later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
 
-  const updateText: UpdateText = async (text: string) => {
+  const updateText: UpdateText = debounce(async (text: string) => {
+    if(text=="")
+    {
+      setHintText("")
+      return; 
+    }
     setIsLoading(true);
-    const search = await fetchSearchText(text);
+    const search = await fetchSearchText(text)
+    console.log("sear", search);
     setShowSearchedData(true);
     setSearchedData(search ? search : []);
     setText(text);
-
+    if (search == undefined) {
+      setIsLoading(false);
+      return setLimitExceed("API Limit Exceed Please wait 1 min.")
+    } else {
+      setLimitExceed("")
+    }
 
     if (search) {
       if (search.length > 0) {
@@ -28,18 +55,18 @@ function App() {
         if (search[0].login.includes(text)) {
           setHintText(search[0].login.replace(text, ""))
           setPaddingLeft(text.length * 7.5)
-        }else{
+        } else {
           setHintText("")
         }
-      }else{
+      } else {
         setHintText("")
       }
-    }else{
+    } else {
       setHintText("")
     }
 
     setIsLoading(false);
-  };
+  }, 1000, false);
 
   const updateFocus: UpdateFocus = async (val: boolean) => {
     if (val) {
@@ -73,6 +100,7 @@ function App() {
             <h1 className="title">typeahead</h1>
           </div>
         </div>
+        <p className="text-danger">{limitExceed}</p>
 
         <div className="d-flex justify-content-center mt-5">
           <div className="position-relative card-form ">
@@ -80,7 +108,7 @@ function App() {
             {inputTextFocus &&
               <input
                 style={{ paddingLeft: paddingLeft }}
-                className="hint-text text-grey"
+                className="hint-text text-dark-grey"
                 type="text"
                 value={hintText}
                 disabled
