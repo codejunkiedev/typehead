@@ -138,6 +138,8 @@
   left: 26px;
   z-index: 1;
   margin-left: 0px;
+  color: #000000;
+  opacity: 0.5;
 }
 
 .bg-white {

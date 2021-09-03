@@ -106,7 +106,7 @@ function App() {
             {inputTextFocus &&
               <input
                 style={{ paddingLeft: paddingLeft }}
-                className="hint-text text-dark-grey"
+                className="hint-text"
                 type="text"
                 value={hintText}
                 disabled
