@@ -18,6 +18,7 @@ function App() {
   const debounce = (func: any, wait: any, immediate: any) => {
     var timeout: any;
     return function () {
+      setHintText("");
       var context = arguments;
       var args = arguments;
       var later = function () {
@@ -33,7 +34,7 @@ function App() {
 
   //This function is called when user done typing
   const updateText: UpdateText = debounce(async (text: string) => {
-    setHintText("")
+    setHintText("");
     //check if input field is empty
     if (text == "") {
       setSearchedData([]);
@@ -51,9 +52,9 @@ function App() {
     //check if api limit exceeded
     if (search == undefined) {
       setIsLoading(false);
-      return setLimitExceed("API Limit Exceed Please wait 1 min.")
+      return setLimitExceed("API Limit Exceed Please wait 1 min.");
     } else {
-      setLimitExceed("")
+      setLimitExceed("");
     }
 
     //checking if received search result
@@ -61,15 +62,15 @@ function App() {
       if (search.length > 0) {
 
         if (search[0].login.includes(text)) {
-          setHintText(search[0].login)
+          setHintText(search[0].login);
         } else {
-          setHintText("")
+          setHintText("");
         }
       } else {
-        setHintText("")
+        setHintText("");
       }
     } else {
-      setHintText("")
+      setHintText("");
     }
 
     setIsLoading(false);
@@ -89,7 +90,7 @@ function App() {
       function handleClickOutside(event: any) {
         if (ref.current && !ref.current.contains(event.target)) {
           setShowSearchedData(false);
-          updateFocus(false)
+          updateFocus(false);
         }
       }
       document.addEventListener("mousedown", handleClickOutside);
