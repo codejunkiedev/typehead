@@ -53,12 +53,13 @@ function App() {
       if (search.length > 0) {
 
         if (search[0].login.includes(text)) {
-          setHintText(search[0].login.replace(text, ""))
+          // setHintText(search[0].login.replace(text, ""))
+          setHintText(search[0].login)
 
           if (isSafari()) {
-            setPaddingLeft(text.length * 5.3)
+            // setPaddingLeft(text.length * 5)
           } else {
-            setPaddingLeft(text.length * 7.5)
+            // setPaddingLeft(text.length * 7.5)
           }
         } else {
           setHintText("")
